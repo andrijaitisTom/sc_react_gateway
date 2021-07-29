@@ -1,36 +1,35 @@
-import React , { useState }  from 'react'
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import createScMerchantOrder from './createScMerchantOrder';
-
-
-// function handleRange() {
-// }
+import logo from './logo.svg'
+// import createOrder from './Order'; 
 
 function App() {
-  const [range, setRange] = useState(50)
 
-console.log(range)
 
+const [apiResponse, setApiResponse] = useState('')
+
+
+
+function callAPI() {
+    fetch("http://localhost:9000/API")
+        .then(res => res.text())
+        .then(res => setApiResponse(res));
+}
+
+
+
+
+const [range, setRange] = useState(25)
+  
   return (
-      <div>
-   <div className="theLogo">
-      <img alt="logo" src={logo} />
+    <div className="App">
+     <img src={logo} alt="logo" id="logo" className="logo"></img>
+     <p>How much do you wish to pay ?</p>
+     <input type="range" id="rangeSlider" value={range} onChange={(e) => setRange(e.target.value)} className="range"></input>
+     <button className="payButton" onClick={callAPI} >Pay {range} $</button>
+     <p className="App-intro">{apiResponse}</p>
+
     </div>
-     
- <p className="question">How much would you like to pay ? </p>
-
-<div className="slidercontainer">
-<input type="range" min="1" max="100" value={range} className="slider" onChange={(e) => setRange(e.target.value)}  id="rangeSlider"></input>
-</div>
-
-<button type="submit" id="submitButton">Pay {range} $</button>
-
-
-
-</div>
-
-
   );
 }
 
