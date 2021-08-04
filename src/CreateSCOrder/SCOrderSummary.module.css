@@ -1,0 +1,84 @@
+.container{
+    align-items: center;
+    color : #8e8e8e;
+    font-size: 12px;
+    font-family: "Red Hat Text",sans-serif;
+    
+
+
+
+}
+.header{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+}
+.orderId{
+    color : #8e8e8e;
+    text-align: left;
+    font-size: 12px;
+    
+}
+.orderIdValue{
+    color: #266f9e;
+    text-align: left;
+
+}
+.validFor{
+    color : #8e8e8e;
+    text-align: right;
+    font-size: 12px;
+}
+.validForValue{
+    color: #266f9e;
+    text-align: right;
+}
+.pay{
+    height: 31px;
+    color: #f8b032;
+    font-weight: 500;
+    font-size: 24px;
+    display: flex;
+    justify-content:center;
+}
+.order{
+    height: 16px;
+}
+.payCurrency{
+    padding-left: 4px;
+}
+.receive{
+    height: 29px;
+    margin: 0 auto;
+    position: relative;
+    width: 50%;    
+    justify-content:center;
+    display: flex;
+}
+.receiveCurrency{
+    padding-left: 4px;
+}
+canvas{
+    background-color: #3f4b53;
+    height: 128px;
+    width: 128px;
+    margin: 32px 0 16px;
+    
+}
+.address{
+    color : #8e8e8e;
+    margin-bottom: 12px; 
+    justify-content:center;
+    display: flex;    font-size: 12px;
+}
+.addressValue{
+    color: black;
+    text-align: right;
+}
+.copyButton{
+    width: 12px;
+}

@@ -76,13 +76,25 @@ const headers = {
        if(res.status == 200){
          console.log('merchant Order function finished the call !')
         orderData = res.data;
-        return orderData           
+        // orderData.json({
+        //   orderRequestId: res.data.orderRequestId
+        // });
+        return orderData 
        }    
    }
    catch (err) {
        console.error(err);
    }
 
+  //  {"orderRequestId":1222152,
+  //  "orderId":"1222152",
+  //  "payCurrency":"BTC"
+  //  ,"payAmount":0.00042563,
+  //  "receiveCurrency":"USD",
+  //  "receiveAmount":15.99,
+  //  "depositAddress":""12q33vwGuXt2hHXgnWwePAY5Mmj2SCQxcV" //<--- this one is generated in non test cases only
+  //  "validUntil":1627977289779,
+  //  "redirectUrl":"https://spectrocoin.com/en/order/view/1222152-Gs3j2vcf.html"}
    
 
 
