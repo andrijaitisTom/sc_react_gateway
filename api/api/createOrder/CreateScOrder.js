@@ -50,21 +50,6 @@ const headers = {
     'Connection': 'Keep-Alive',
     'Accept-Encoding': 'gzip,deflate'
       }
-  // axios.post(
-  //     "https://spectrocoin.com/api/merchant/1/createOrder",
-  //     params,
-  //     {headers: headers}
-  //   )
-  //   .then((r) => {
-  //     console.log(r.data);
-  //     orderData = r.data;
-  //     return orderData
-  //   })
-  //   .catch((e) => console.log(e));
-
-  //   return 'asd'
-
-
 
 
 
@@ -76,9 +61,6 @@ const headers = {
        if(res.status == 200){
          console.log('merchant Order function finished the call !')
         orderData = res.data;
-        // orderData.json({
-        //   orderRequestId: res.data.orderRequestId
-        // });
         return orderData 
        }    
    }
@@ -86,16 +68,6 @@ const headers = {
        console.error(err);
    }
 
-  //  {"orderRequestId":1222152,
-  //  "orderId":"1222152",
-  //  "payCurrency":"BTC"
-  //  ,"payAmount":0.00042563,
-  //  "receiveCurrency":"USD",
-  //  "receiveAmount":15.99,
-  //  "depositAddress":""12q33vwGuXt2hHXgnWwePAY5Mmj2SCQxcV" //<--- this one is generated in non test cases only
-  //  "validUntil":1627977289779,
-  //  "redirectUrl":"https://spectrocoin.com/en/order/view/1222152-Gs3j2vcf.html"}
-   
 
 
 }
