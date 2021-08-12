@@ -5,15 +5,18 @@ const merchant = require('./merchantConstants')
 var path = require('path')
 
 
-module.exports.callTheOrder = async function () {
+module.exports.callTheOrder = async function (range) {
+
+  var r = parseFloat(range)
+  console.log(r)
 
   console.log('calling');
-const result = await merchantOrder();
+const result = await merchantOrder(r);
 console.log('return the response from merchant Order');
 
 return result;
 
-async function merchantOrder() {
+async function merchantOrder(r) {
 
 var privateKey = fs.readFileSync(path.resolve("createOrder/btcToUSD.pem"))
 
@@ -23,7 +26,7 @@ const dataToSign ='merchantId='+merchant.merchantId+
 '&payCurrency='+merchant.payCurrency+
 '&payAmount='+merchant.payAmount+
 '&receiveCurrency='+merchant.receiveCurrency+
-'&receiveAmount='+merchant.receiveAmount+
+'&receiveAmount='+(r+0.001)+
 '&description='+merchant.description+
 '&culture='+merchant.culture+
 '&callbackUrl='+merchant.callback+
@@ -37,8 +40,9 @@ const signature = crypto.sign("sha1", Buffer.from(dataToSign), {
 })
 
 
-
-console.log('SIGNATURE '+signature.toString("base64"))
+// console.log('scorder range ' +merchant.receiveAmount+' SIGNATURE '+signature.toString("base64"))
+// console.log(' const: ' +merchant.receiveAmount+' | range: '+r)
+// console.log(' const type: ' + typeof merchant.receiveAmount+' | range type: '+typeof r)
 
 const params = new URLSearchParams(dataToSign)
 params.append("sign", signature.toString("base64"));
@@ -51,8 +55,6 @@ const headers = {
     'Accept-Encoding': 'gzip,deflate'
       }
 
-
-
     try {
       const  res = await axios.post("https://spectrocoin.com/api/merchant/1/createOrder",
       params,
@@ -62,11 +64,12 @@ const headers = {
          console.log('merchant Order function finished the call !')
         orderData = res.data;
         return orderData 
-       }    
+       }    else return 'failed to create order - ' + res.status
    }
    catch (err) {
        console.error(err);
    }
+
 
 
 

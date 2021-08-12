@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import classes from './SCOrderSummary.module.css'
 import Modal from '../Modal/Modal'
+import Ticker from '../Ticker/Ticker';
 
 
 class TestRequest extends Component {
@@ -12,6 +13,7 @@ class TestRequest extends Component {
             clicked={this.props.clicked}
             >
                 <div className={classes.container}>
+                    {/* <Ticker /> */}
                     <div className={classes.buttonConta}>
                 <button className={classes.cancelOrder} onClick={this.props.clicked}>
                 </button>
