@@ -9,6 +9,7 @@
 
 }
 .header{
+    margin-top: 15px;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -36,6 +37,10 @@
 .validForValue{
     color: #266f9e;
     text-align: right;
+}
+.progress{
+    height: 4px;
+    width: 95%;
 }
 .pay{
     height: 31px;
@@ -73,7 +78,7 @@ canvas{
     color : #8e8e8e;
     margin-bottom: 12px; 
     justify-content:center;
-    display: flex;    font-size: 12px;
+    display: block;    font-size: 12px;
 }
 .addressValue{
     color: black;
@@ -81,4 +86,66 @@ canvas{
 }
 .copyButton{
     width: 12px;
+    margin-right: 4px;
+    display: inline-flex;
+    margin-top: 12px; 
+
+
+}
+.copyButtonValue{
+    display: inline-flex;
+}
+.copyButtonContainer{
+    justify-content:center;
+    align-items: center;
+    cursor: pointer;
+    display: block;
+    justify-content: center;
+    color: #266f9e;
+}
+.payWithSC{
+    
+    background: #4972f4;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 700;
+    outline: none;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all .2s ease;
+    width: 60%;
+    font-weight: 70%;
+
+}
+.cancelOrder{
+    right: 4px;
+    top: 4px;
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    border: none;
+    transition: all 201.524ms ease 0ms;
+    background: transparent url("ui-sprites.png") no-repeat 0 0;
+    background-size: 26px auto;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    cursor: pointer;
+
+}
+.cancelOrder:hover{
+    filter: grayscale(0);
+    transform: rotate(1turn);
+}
+
+.info{
+    color: black;
+}
+.info strong{
+    margin-right: 4px;
 }

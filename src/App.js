@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import logo from './logo.svg'
-// import createOrder from './Order'; 
 import SCOrderSummary from './CreateSCOrder/SCOrderSummary'
 
 function App() {
@@ -9,6 +8,7 @@ function App() {
 
 const [apiResponse, setApiResponse] = useState([''])
 const [showModal, setShowModal] = useState(false)
+
 
 
 function callAPI() {
@@ -20,20 +20,44 @@ function callAPI() {
 
 
 
+
+
+function closeModalHandler() {
+setShowModal(false)
+}
+
+function condition() {
+  if (Object.values(apiResponse).length===8) {
+   return true
+  } else {    
+   return false    
+  }
+}
+
 const [range, setRange] = useState(25)
+
+
   
   return (
+    
     <div className="App">
+      {/* {callTicker()} */}
      <img src={logo} alt="logo" id="logo" className="logo"></img>
      <p>How much do you wish to pay ?</p>
      <input type="range" id="rangeSlider" value={range} onChange={(e) => setRange(e.target.value)} className="range"></input>
      <button className="payButton" onClick={callAPI} >Pay {range} $</button>
-     {console.log('api response type: '+typeof apiResponse+ ' value: '+apiResponse)}
-     {console.log(Object.values(apiResponse))}
+     {/* <CallTicker/> */}
 
+     {/* {console.log('api response type: '+typeof apiResponse+ ' value: '+apiResponse)}
+     {console.log(Object.values(apiResponse))} */}
+        {/* {console.log(Object.values(ticker))} */}
+   
 <SCOrderSummary 
 show={showModal}
+clicked={closeModalHandler}
 responseData = {Object.values(apiResponse)}
+closeModalHandler = {closeModalHandler}
+isTestOrder = {condition()}
 />
     </div>
   );

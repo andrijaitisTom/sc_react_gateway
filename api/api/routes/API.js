@@ -8,7 +8,6 @@ router.get('/', async function(req, res, next) {
 var response = await callTheOrder.callTheOrder()
     res.send(response)
 
-
 });
 
 module.exports = router;

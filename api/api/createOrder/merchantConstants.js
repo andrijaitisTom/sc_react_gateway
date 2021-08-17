@@ -3,7 +3,7 @@ module.exports = {
     apiId: 46013,
     payCurrency: 'BTC',
     receiveCurrency: 'USD',
-    receiveAmount: 15.99,
+    receiveAmount: 150000000.99,
     payAmount: '0.0' ,
     description: 'some description here'.replace(/\s/g, ''),
     culture: 'en',
