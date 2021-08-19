@@ -5,15 +5,19 @@ const merchant = require('./merchantConstants')
 var path = require('path')
 
 
-module.exports.callTheOrder = async function () {
+module.exports.callTheOrder = async function (range) {
+
+  var r = parseFloat(range)
+  console.log(r)
 
   console.log('calling');
-const result = await merchantOrder();
+console.log(r)
+const result = await merchantOrder(r);
 console.log('return the response from merchant Order');
 
 return result;
 
-async function merchantOrder() {
+async function merchantOrder(r) {
 
 var privateKey = fs.readFileSync(path.resolve("createOrder/btcToUSD.pem"))
 
@@ -23,7 +27,7 @@ const dataToSign ='merchantId='+merchant.merchantId+
 '&payCurrency='+merchant.payCurrency+
 '&payAmount='+merchant.payAmount+
 '&receiveCurrency='+merchant.receiveCurrency+
-'&receiveAmount='+merchant.receiveAmount+
+'&receiveAmount='+r+
 '&description='+merchant.description+
 '&culture='+merchant.culture+
 '&callbackUrl='+merchant.callback+
@@ -37,8 +41,9 @@ const signature = crypto.sign("sha1", Buffer.from(dataToSign), {
 })
 
 
-
-console.log('SIGNATURE '+signature.toString("base64"))
+// console.log('scorder range ' +merchant.receiveAmount+' SIGNATURE '+signature.toString("base64"))
+// console.log(' const: ' +merchant.receiveAmount+' | range: '+r)
+// console.log(' const type: ' + typeof merchant.receiveAmount+' | range type: '+typeof r)
 
 const params = new URLSearchParams(dataToSign)
 params.append("sign", signature.toString("base64"));
@@ -50,52 +55,23 @@ const headers = {
     'Connection': 'Keep-Alive',
     'Accept-Encoding': 'gzip,deflate'
       }
-  // axios.post(
-  //     "https://spectrocoin.com/api/merchant/1/createOrder",
-  //     params,
-  //     {headers: headers}
-  //   )
-  //   .then((r) => {
-  //     console.log(r.data);
-  //     orderData = r.data;
-  //     return orderData
-  //   })
-  //   .catch((e) => console.log(e));
-
-  //   return 'asd'
-
-
-
-
 
     try {
-      const  res = await axios.post("https://spectrocoin.com/api/merchant/1/createOrder",
+      const res = await axios.post("https://spectrocoin.com/api/merchant/1/createOrder",
       params,
       {headers: headers}
        )
        if(res.status == 200){
          console.log('merchant Order function finished the call !')
         orderData = res.data;
-        // orderData.json({
-        //   orderRequestId: res.data.orderRequestId
-        // });
         return orderData 
-       }    
+       }    else return 'failed to create order - ' + res.status
    }
    catch (err) {
        console.error(err);
    }
 
-  //  {"orderRequestId":1222152,
-  //  "orderId":"1222152",
-  //  "payCurrency":"BTC"
-  //  ,"payAmount":0.00042563,
-  //  "receiveCurrency":"USD",
-  //  "receiveAmount":15.99,
-  //  "depositAddress":""12q33vwGuXt2hHXgnWwePAY5Mmj2SCQxcV" //<--- this one is generated in non test cases only
-  //  "validUntil":1627977289779,
-  //  "redirectUrl":"https://spectrocoin.com/en/order/view/1222152-Gs3j2vcf.html"}
-   
+
 
 
 }
