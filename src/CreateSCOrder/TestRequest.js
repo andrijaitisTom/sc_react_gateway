@@ -29,11 +29,7 @@ class TestRequest extends Component {
 </div>
 <div className={classes.validFor}>
     Valid for:
-<<<<<<< HEAD
     <span className={classes.validForValue}> <Timer finishTime ={this.props.responseData[6]}/> </span>
-=======
-    <span className={classes.validForValue}> {this.props.responseData[6]} </span>
->>>>>>> 0643d0fdb971b843251ba11db8f50db579e1373d
 </div>
 </div>
             <canvas className={classes.progress}>
