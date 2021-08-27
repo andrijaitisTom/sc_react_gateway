@@ -19,20 +19,24 @@ const Timer = (props) => {
   let timeLeftEpoch = props.finishTime-nowEpoch
   let showTimeLeft = timeLeftEpoch/1000
     const [time, setTime] = useState(showTimeLeft)
+    const [delay, setDelay]  = useState(1000)
 
 useInterval(function(){ 
     const newTime = showTimeLeft
     if(time>0){
         setTime(newTime-1)
-    }else setTime('EXPIRED')
- }, 1000);
-
-
-//  const epochToTime = new Date(time*1000) 
+    } else setDelay(null)
+ }, delay);
   
+if (time>0){
+    return  (secondsToHms(time))
+}
+else return <span style={{color:'red'}}>EXPIRED</span>
 
-        return (secondsToHms(time))
+
+}
+     
         
-    }
+    
 
 export default Timer    

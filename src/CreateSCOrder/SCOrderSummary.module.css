@@ -149,3 +149,16 @@ canvas{
 .info strong{
     margin-right: 4px;
 }
+.progressContainer{
+    position: relative;
+}
+.progressTopLevel{
+    position: absolute;
+    background-color: #dadada;
+    height: 4px;
+}
+.progress{
+    background-color: #204d6a;
+    height: 4px;
+    width: 100%;
+}
