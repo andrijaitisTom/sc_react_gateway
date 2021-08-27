@@ -3,7 +3,8 @@ import classes from './SCOrderSummary.module.css'
 import Modal from '../Modal/Modal'
 import Ticker from '../Ticker/Ticker';
 import Timer from './Timer';
-
+import Progress from './Progress';
+import QrCode from './QrCode';
 
 class TestRequest extends Component {
     
@@ -17,7 +18,7 @@ class TestRequest extends Component {
             >
                 <div className={classes.container}>
                     <Ticker     range={this.props.range}/>
-                    <div className={classes.buttonConta}>
+                    <div className={classes.buttonContainer}>
                 <button className={classes.cancelOrder} onClick={this.props.clicked}>
                 </button>
                     </div>
@@ -32,9 +33,9 @@ class TestRequest extends Component {
     <span className={classes.validForValue}> <Timer finishTime ={this.props.responseData[6]}/> </span>
 </div>
 </div>
-            <canvas className={classes.progress}>
-
-            </canvas>
+     <div className={classes.progressContainer}>
+          <Progress percent={0.11111}/>
+     </div>
 <div >
 <div className={classes.order}>Paying for order {this.props.responseData[1]} </div>
     <div className={classes.pay}>
@@ -47,9 +48,7 @@ class TestRequest extends Component {
 <div className={classes.receiveCurrency}> {this.props.responseData[4]} </div>
 </div>
 
-<canvas>
-
-</canvas>
+<QrCode address='This is a test request'/>
 <div className={classes.address}> Address: 
     <span className={classes.addressValue}> This is a test order </span>
  
