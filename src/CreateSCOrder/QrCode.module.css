@@ -1,6 +1,9 @@
 .skeleton {
+    height: 150px;
+    width: 150px;
 opacity: .7;
 animation: skeleton-loading 1s linear infinite alternate;
+border: none;
 }
 
 @keyframes skeleton-loading {
